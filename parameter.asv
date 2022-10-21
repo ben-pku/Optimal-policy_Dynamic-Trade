@@ -4,7 +4,7 @@ function [ pa ,state] = parameter( sector, gamma1, gamma0, sigma, alpha )
     pa.s = sector; % num of sectors
     
     % total time
-    pa.tt = 25;
+    pa.tt = 20;
     
     % production
     pa.alpha =  alpha; % labor share  // [0.66; 0.56] .*
