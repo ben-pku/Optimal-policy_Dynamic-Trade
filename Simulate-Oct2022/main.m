@@ -42,7 +42,24 @@ num  = 2;
 %                                              [0.103; 0.21].*ones(num,1),...    gamma0,
 %                                              [4; 4.2].*ones(num,1), ...           sigma
 %                                               ones(num, 1) );            %         alpha   
-%  % % research on this system with different initial labor (time-t equilibrium)
+
+for i = 1:1
+  beta = 0.55;
+  D = [3 ; 9];
+  ps = [3; 9 ];
+  T = [1; 1];
+  [pa2, state]= parameter(num, [0.29; 0.30].*ones(num,1),...    gamma1,
+                                             [0.103 ; 0.21].*ones(num,1),...    gamma0,
+                                             [4; 4.2].*ones(num,1), ...           sigma
+                                              ones(num, 1), ...       %         alpha 
+                                             beta, D, ps, T  );                                                       
+                                          
+  solve_ss_rough(pa2, i);
+end
+  
+  
+  
+ % % research on this system with different initial labor (time-t equilibrium)
 %     re = timet([0.19 0.191], pa1);  
 %    
 %    save re;
@@ -58,23 +75,25 @@ num  = 2;
    
    % 3. general case with io link, but with EES (not robust, just a trial)
 
- [pa2, state]= parameter(num, [0.29; 0.30].*ones(num,1),...    gamma1,
-                                             [0.103; 0.21].*ones(num,1),...    gamma0,
-                                             [4; 4.2].*ones(num,1), ...           sigma
-                                             [0.6; 0.6] .* ones(num, 1) );            %         alpha   
- % % research on this system with different initial labor (time-t equilibrium)
- S2 = solve_ss_rough(pa2); 
-    re2 = timet([0.1 0.3], pa2);  
-   
-   save re2;
-   load re2;
-
-   figure(3);
-   drawer(re2.Path1, pa2);
-   drawer(re2.Path2, pa2);
-   drawer(re2.Path3, pa2);
-   drawer(re2.Path4, pa2);
-   drawer(re2.Path5, pa2);
+%  [pa2, state]= parameter(num, [0.29; 0.30].*ones(num,1),...    gamma1,
+%                                              [0.103; 0.21].*ones(num,1),...    gamma0,
+%                                              [4; 4.2].*ones(num,1), ...           sigma
+%                                              [1; 0.5] .* ones(num, 1) );            %         alpha  -- labor share
+%  % % research on this system with different initial labor (time-t equilibrium)
+%  S2 = solve_ss_rough(pa2); 
+%  
+ 
+%     re2 = timet([0.1 0.3], pa2);  
+%    
+%    save re2;
+%    load re2;
+% 
+%    figure(3);
+%    drawer(re2.Path1, pa2);
+%    drawer(re2.Path2, pa2);
+%    drawer(re2.Path3, pa2);
+%    drawer(re2.Path4, pa2);
+%    drawer(re2.Path5, pa2);
  
 
  

@@ -1,0 +1,25 @@
+%% simulate the value function
+% Dec, 2, 2022
+
+% % add VFItoolkit
+% addpath("c:\Users\Benjamin Hwang\Documents\Andres-Roduiguez-Clare-2022\code\VFIToolkit-matlab-master\VFIToolkit-matlab-master")
+
+% setup parameters
+beta=0.98;
+sigma=5; 
+gamma1=0.3;
+gamma2=0.3;
+D = 1.5;
+Par = para(beta, sigma, gamma1, gamma2, D);
+
+% Grids
+% set up grids for labor
+Grid.nx = 1e3;
+Grid.x = linspace(1e-4, 1-1e-4, Grid.nx)';
+VFIPar.V0 = 1/(1-Par.beta) * ones(Grid.nx,1);
+VFIPar.xp0 = 1/2* ones(Grid.nx,1);
+
+% VFI
+VFIPar.maxiter = 1e4;
+VFIPar.tol = 1e-3;
+[V, xp] = VFI(Par, VFIPar, Grid);
