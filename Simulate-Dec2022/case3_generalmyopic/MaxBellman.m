@@ -1,6 +1,7 @@
 function [V1, xp] = MaxBellman( Par, V0, Grid )
 %MAXBELLMAN 
-% Maximizes the RHS of the Bellman equation using golden section search
+% Maximizes the RHS of the Bellman equation using golden section
+% 
 % Inputs
 % Grid n*1
 
@@ -41,7 +42,12 @@ for it = 1: MAXIT
 
 end
 
-% now our 
+% now our ABCD are all within a small epsilon of one another. We will use
+% the average of B and C as the optimal level of allocations
+xp = (B+C)/2;
+
+% evaluate the Bellman equation to find the new value function
+V1 = Bellman(Par, V0, Grid, xp);
 
 
 end
