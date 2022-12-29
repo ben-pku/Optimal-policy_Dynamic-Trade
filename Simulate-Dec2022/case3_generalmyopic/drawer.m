@@ -12,7 +12,7 @@ xlabel("x");
 ylabel("V(x) or $\frac{\pi(x,x)}{1-\delta}$" , 'Interpreter', 'LaTeX');
 % ylim([48 , 66]);
 title("Value function and lifetime utility");
-legend("V(x)","$\frac{\pi(x,x)}{1-\delta}$", 'Interpreter', 'LaTeX');
+legend("V(x)","$\frac{\pi(x,x)}{1-\delta}$", 'Interpreter', 'LaTeX','Location', 'Best');
 % 
 subplot(2,2,2)
 plot(Grid.x, xp);
